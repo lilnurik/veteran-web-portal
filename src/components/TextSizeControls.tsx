@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/useLanguage';
 import { t } from '@/utils/translations';
+import { Minus, Plus, Type } from 'lucide-react';
 
 const TextSizeControls = () => {
   const { language } = useLanguage();
@@ -25,28 +26,31 @@ const TextSizeControls = () => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex items-center gap-2 bg-white/10 rounded-lg p-1">
+      <Type className="w-4 h-4 text-white opacity-75 hidden sm:block" />
       <Button
-        variant="outline"
+        variant="ghost"
         size="sm"
         onClick={() => changeFontSize(fontSize - 2)}
         disabled={fontSize <= 14}
-        className="text-base px-3 py-2"
+        className="h-8 w-8 p-0 text-white hover:bg-white/20 disabled:opacity-50"
       >
-        A-
+        <Minus className="w-4 h-4" />
       </Button>
-      <span className="text-sm text-muted-foreground">{fontSize}px</span>
+      <span className="text-xs text-white/75 min-w-[35px] text-center">
+        {fontSize}px
+      </span>
       <Button
-        variant="outline"
+        variant="ghost"
         size="sm"
         onClick={() => changeFontSize(fontSize + 2)}
         disabled={fontSize >= 24}
-        className="text-base px-3 py-2"
+        className="h-8 w-8 p-0 text-white hover:bg-white/20 disabled:opacity-50"
       >
-        A+
+        <Plus className="w-4 h-4" />
       </Button>
-      <span className="text-sm text-muted-foreground ml-2">
-        {t('increaseText', language)}
+      <span className="text-xs text-white/75 hidden lg:block ml-1">
+        Размер шрифта
       </span>
     </div>
   );

@@ -14,17 +14,18 @@ const LanguageSwitcher = () => {
   ];
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 flex-wrap">
       {languages.map((lang) => (
         <Button
           key={lang.code}
-          variant={language === lang.code ? "default" : "outline"}
+          variant={language === lang.code ? "secondary" : "ghost"}
           size="sm"
           onClick={() => changeLanguage(lang.code)}
-          className="text-base md:text-lg px-3 py-2 md:px-4 md:py-3"
+          className="text-sm lg:text-base px-3 py-2 min-h-[40px] bg-white/10 hover:bg-white/20 text-white border-white/20"
         >
-          <span className="mr-1">{lang.flag}</span>
-          {lang.name}
+          <span className="mr-1 text-base">{lang.flag}</span>
+          <span className="hidden sm:inline">{lang.name}</span>
+          <span className="sm:hidden">{lang.code.toUpperCase()}</span>
         </Button>
       ))}
     </div>
