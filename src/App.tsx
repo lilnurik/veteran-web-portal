@@ -11,6 +11,8 @@ import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Contacts from "./pages/Contacts";
 import FAQ from "./pages/FAQ";
+import Reference from "./pages/Reference";
+import Documents from "./pages/Documents";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/reference" element={<Reference />} />
+            <Route path="/documents" element={<Documents />} />
             <Route path="/search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

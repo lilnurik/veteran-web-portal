@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/useLanguage';
 import { t } from '@/utils/translations';
+import { Minus, Plus, Type } from 'lucide-react';
 
 const TextSizeControls = () => {
   const { language } = useLanguage();
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(18);
 
   useEffect(() => {
     const saved = localStorage.getItem('fontSize');
@@ -18,34 +19,37 @@ const TextSizeControls = () => {
   }, []);
 
   const changeFontSize = (newSize: number) => {
-    const size = Math.max(14, Math.min(24, newSize));
+    const size = Math.max(16, Math.min(28, newSize));
     setFontSize(size);
     document.documentElement.style.fontSize = `${size}px`;
     localStorage.setItem('fontSize', size.toString());
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex items-center gap-3 bg-accent/10 rounded-lg p-2">
+      <Type className="w-5 h-5 text-accent" />
       <Button
         variant="outline"
         size="sm"
         onClick={() => changeFontSize(fontSize - 2)}
-        disabled={fontSize <= 14}
-        className="text-base px-3 py-2"
+        disabled={fontSize <= 16}
+        className="h-10 w-10 p-0"
       >
-        A-
+        <Minus className="w-4 h-4" />
       </Button>
-      <span className="text-sm text-muted-foreground">{fontSize}px</span>
+      <span className="text-sm font-medium min-w-[60px] text-center bg-white px-3 py-1 rounded border">
+        {fontSize}px
+      </span>
       <Button
         variant="outline"
         size="sm"
         onClick={() => changeFontSize(fontSize + 2)}
-        disabled={fontSize >= 24}
-        className="text-base px-3 py-2"
+        disabled={fontSize >= 28}
+        className="h-10 w-10 p-0"
       >
-        A+
+        <Plus className="w-4 h-4" />
       </Button>
-      <span className="text-sm text-muted-foreground ml-2">
+      <span className="text-sm text-muted-foreground hidden sm:block">
         {t('increaseText', language)}
       </span>
     </div>
