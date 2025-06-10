@@ -3,53 +3,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @layer base {
   :root {
-    --background: 248 250 252; /* светло-серый фон */
-    --foreground: 30 41 59; /* темно-серый текст */
+    --background: 249 250 251; /* #F9FAFB - почти белый, мягкий */
+    --foreground: 17 24 39; /* #111827 - основной цвет текста */
 
-    --card: 255 255 255; /* белые карточки */
-    --card-foreground: 30 41 59; /* темный текст на карточках */
+    --card: 255 255 255; /* #FFFFFF - белые карточки */
+    --card-foreground: 17 24 39; /* #111827 - темный текст на карточках */
 
-    --popover: 255 255 255;
-    --popover-foreground: 30 41 59;
+    --popover: 255 255 255; /* #FFFFFF */
+    --popover-foreground: 17 24 39; /* #111827 */
 
-    --primary: 30 58 138; /* темно-синий основной */
-    --primary-foreground: 255 255 255; /* белый текст на синем */
+    --primary: 79 70 229; /* #4F46E5 - индиго основной */
+    --primary-foreground: 255 255 255; /* белый текст на индиго */
 
-    --secondary: 71 85 105; /* серо-синий */
+    --secondary: 99 102 241; /* #6366F1 - чуть светлее primary */
     --secondary-foreground: 255 255 255; /* белый текст */
 
-    --muted: 226 232 240; /* светло-серый приглушенный */
-    --muted-foreground: 100 116 139; /* серый текст */
+    --muted: 229 231 235; /* #E5E7EB - border/divider */
+    --muted-foreground: 107 114 128; /* #6B7280 - text secondary */
 
-    --accent: 59 130 246; /* яркий синий акцент */
-    --accent-foreground: 255 255 255; /* белый текст на акценте */
+    --accent: 34 197 94; /* #22C55E - сочный зелёный */
+    --accent-foreground: 255 255 255; /* белый текст на зелёном */
 
-    --destructive: 239 68 68;
+    --destructive: 239 68 68; /* #EF4444 - error */
     --destructive-foreground: 255 255 255;
 
-    --border: 203 213 225;
-    --input: 226 232 240;
-    --ring: 59 130 246;
+    --warning: 245 158 11; /* #F59E0B */
+    --warning-foreground: 255 255 255;
+
+    --info: 59 130 246; /* #3B82F6 */
+    --info-foreground: 255 255 255;
+
+    --border: 229 231 235; /* #E5E7EB */
+    --input: 229 231 235; /* #E5E7EB */
+    --ring: 79 70 229; /* #4F46E5 */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 248 250 252;
-    --sidebar-foreground: 71 85 105;
-    --sidebar-primary: 30 58 138;
+    --sidebar-background: 249 250 251;
+    --sidebar-foreground: 107 114 128;
+    --sidebar-primary: 79 70 229;
     --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 226 232 240;
-    --sidebar-accent-foreground: 30 58 138;
-    --sidebar-border: 203 213 225;
-    --sidebar-ring: 59 130 246;
+    --sidebar-accent: 229 231 235;
+    --sidebar-accent-foreground: 79 70 229;
+    --sidebar-border: 229 231 235;
+    --sidebar-ring: 79 70 229;
   }
 
   .dark {
-    --background: 15 23 42;
-    --foreground: 248 250 252;
+    --background: 15 23 42; /* #0F172A - темный фон */
+    --foreground: 248 250 252; /* светлый текст */
 
     --card: 30 41 59;
     --card-foreground: 248 250 252;
@@ -57,7 +66,7 @@
     --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 59 130 246;
+    --primary: 99 102 241; /* #6366F1 - светлее в темной теме */
     --primary-foreground: 15 23 42;
 
     --secondary: 71 85 105;
@@ -66,24 +75,30 @@
     --muted: 51 65 85;
     --muted-foreground: 148 163 184;
 
-    --accent: 30 58 138;
-    --accent-foreground: 248 250 252;
+    --accent: 34 197 94; /* #22C55E - зелёный остается */
+    --accent-foreground: 15 23 42;
 
     --destructive: 220 38 38;
     --destructive-foreground: 248 250 252;
 
+    --warning: 245 158 11;
+    --warning-foreground: 15 23 42;
+
+    --info: 59 130 246;
+    --info-foreground: 15 23 42;
+
     --border: 71 85 105;
     --input: 71 85 105;
-    --ring: 59 130 246;
+    --ring: 99 102 241;
 
     --sidebar-background: 15 23 42;
     --sidebar-foreground: 148 163 184;
-    --sidebar-primary: 59 130 246;
+    --sidebar-primary: 99 102 241;
     --sidebar-primary-foreground: 15 23 42;
     --sidebar-accent: 51 65 85;
     --sidebar-accent-foreground: 248 250 252;
     --sidebar-border: 71 85 105;
-    --sidebar-ring: 59 130 246;
+    --sidebar-ring: 99 102 241;
   }
 }
 
@@ -93,44 +108,155 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-size: 18px;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* Typography styles for accessibility */
+  h1 { 
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+    color: hsl(var(--primary));
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  h2 { 
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold;
+    color: hsl(var(--primary));
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  h3 { 
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold;
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  h4 {
+    @apply text-lg md:text-xl font-medium;
+    color: hsl(var(--foreground));
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  p, li { 
+    @apply text-base md:text-lg;
+    color: hsl(var(--foreground));
     line-height: 1.6;
   }
 
-  /* Large text for accessibility */
-  h1 { 
-    @apply text-3xl md:text-5xl font-bold;
-    color: hsl(var(--primary));
+  .text-secondary {
+    color: hsl(var(--muted-foreground));
   }
-  h2 { 
-    @apply text-2xl md:text-4xl font-semibold;
-    color: hsl(var(--primary));
-  }
-  h3 { 
-    @apply text-xl md:text-3xl font-semibold;
-    color: hsl(var(--foreground));
-  }
-  p, li { 
-    @apply text-lg md:text-xl;
-    color: hsl(var(--foreground));
+
+  .text-caption {
+    @apply text-sm;
+    color: hsl(var(--muted-foreground));
+    font-size: 14px;
   }
   
-  /* Button styles for elderly users */
+  /* Button styles for elderly users with improved states */
   button {
     min-height: 48px;
     min-width: 120px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Link styles */
+  a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: hsl(var(--secondary));
+    text-decoration: underline;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
 
 /* Accessibility and mobile optimizations */
 @media (max-width: 768px) {
   body {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   button {
     min-height: 52px;
     min-width: 100%;
   }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Utility classes for new colors */
+.bg-warning {
+  background-color: hsl(var(--warning));
+}
+
+.text-warning {
+  color: hsl(var(--warning));
+}
+
+.bg-info {
+  background-color: hsl(var(--info));
+}
+
+.text-info {
+  color: hsl(var(--info));
+}
+
+.border-warning {
+  border-color: hsl(var(--warning));
+}
+
+.border-info {
+  border-color: hsl(var(--info));
+}
+
+/* Improved card shadows */
+.card-shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
