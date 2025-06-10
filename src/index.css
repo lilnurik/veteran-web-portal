@@ -99,10 +99,10 @@
   }
 
   /* Large text for accessibility */
-  h1 { @apply text-3xl md:text-5xl font-bold; }
-  h2 { @apply text-2xl md:text-4xl font-semibold; }
-  h3 { @apply text-xl md:text-3xl font-semibold; }
-  p, li { @apply text-lg md:text-xl; }
+  h1 { @apply text-3xl md:text-5xl font-bold text-foreground; }
+  h2 { @apply text-2xl md:text-4xl font-semibold text-foreground; }
+  h3 { @apply text-xl md:text-3xl font-semibold text-foreground; }
+  p, li { @apply text-lg md:text-xl text-foreground; }
   
   /* Button styles for elderly users */
   button {
