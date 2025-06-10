@@ -7,32 +7,32 @@
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 15 23 42;
+    --background: 248 250 252; /* светло-серый фон */
+    --foreground: 30 41 59; /* темно-серый текст */
 
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card: 255 255 255; /* белые карточки */
+    --card-foreground: 30 41 59; /* темный текст на карточках */
 
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover-foreground: 30 41 59;
 
-    --primary: 30 58 138;
-    --primary-foreground: 248 250 252;
+    --primary: 30 58 138; /* темно-синий основной */
+    --primary-foreground: 255 255 255; /* белый текст на синем */
 
-    --secondary: 100 116 139;
-    --secondary-foreground: 248 250 252;
+    --secondary: 71 85 105; /* серо-синий */
+    --secondary-foreground: 255 255 255; /* белый текст */
 
-    --muted: 226 232 240;
-    --muted-foreground: 71 85 105;
+    --muted: 226 232 240; /* светло-серый приглушенный */
+    --muted-foreground: 100 116 139; /* серый текст */
 
-    --accent: 59 130 246;
-    --accent-foreground: 255 255 255;
+    --accent: 59 130 246; /* яркий синий акцент */
+    --accent-foreground: 255 255 255; /* белый текст на акценте */
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
     --border: 203 213 225;
-    --input: 203 213 225;
+    --input: 226 232 240;
     --ring: 59 130 246;
 
     --radius: 0.5rem;
@@ -40,7 +40,7 @@
     --sidebar-background: 248 250 252;
     --sidebar-foreground: 71 85 105;
     --sidebar-primary: 30 58 138;
-    --sidebar-primary-foreground: 248 250 252;
+    --sidebar-primary-foreground: 255 255 255;
     --sidebar-accent: 226 232 240;
     --sidebar-accent-foreground: 30 58 138;
     --sidebar-border: 203 213 225;
@@ -99,10 +99,22 @@
   }
 
   /* Large text for accessibility */
-  h1 { @apply text-3xl md:text-5xl font-bold text-foreground; }
-  h2 { @apply text-2xl md:text-4xl font-semibold text-foreground; }
-  h3 { @apply text-xl md:text-3xl font-semibold text-foreground; }
-  p, li { @apply text-lg md:text-xl text-foreground; }
+  h1 { 
+    @apply text-3xl md:text-5xl font-bold;
+    color: hsl(var(--primary));
+  }
+  h2 { 
+    @apply text-2xl md:text-4xl font-semibold;
+    color: hsl(var(--primary));
+  }
+  h3 { 
+    @apply text-xl md:text-3xl font-semibold;
+    color: hsl(var(--foreground));
+  }
+  p, li { 
+    @apply text-lg md:text-xl;
+    color: hsl(var(--foreground));
+  }
   
   /* Button styles for elderly users */
   button {
